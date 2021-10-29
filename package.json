@@ -1,0 +1,48 @@
+{
+    "name": "seal",
+    "publisher": "Roncho",
+    "displayName": "seal",
+    "description": "Walrus language support & Seal engine basis",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.61.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "wal",
+                "aliases": [
+                    "Walrus",
+                    "wal"
+                ],
+                "extensions": [
+                    ".wal"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "iconThemes": [
+            {
+                "id": "wal-icons",
+                "label": "Walrus",
+                "path": "./fileicons/wal-icon-theme.json",
+                "extends": {
+                    "all": "true"
+                }
+            }
+        ],
+        "grammars": [
+            {
+                "language": "wal",
+                "scopeName": "source.wal",
+                "path": "./syntaxes/wal.tmLanguage.json"
+            }
+        ]
+    },
+    "dependencies": {
+        "vsce": "^1.100.2"
+    }
+}

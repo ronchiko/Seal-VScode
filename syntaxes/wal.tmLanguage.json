@@ -1,0 +1,84 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Walrus",
+	"patterns": [
+		{
+			"include": "#container"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#numeric"
+		}
+	],
+	"repository": {
+		"container": {
+			"patterns": [
+				{
+					"name": "keyword.wal",
+					"match": "\\w+:"
+				},
+				{
+					"name": "constant.language",
+					"match": "(\\w+)\\W*=",
+					"captures": {
+						"1": { "name": "variable.wal" }
+					}
+				},
+				{
+					"name": "constant.language",
+					"match": "\\*"
+				}
+			]
+		},
+		"strings": {
+			"patterns": [
+				{
+					"name": "string.quoted.double.wal",
+					"begin": "\"",
+					"end": "\"",
+					"patterns": [{
+						"include": "#strings.escape"
+					}]
+				},
+				{
+					"name": "string.quoted.double.wal",
+					"begin": "'",
+					"end": "'",
+					"patterns": [{
+						"include": "#strings.escape"
+					}]
+				}
+			]
+		},
+		"strings.escape": {
+			"patterns": [{
+				"name": "constant.character.escape.wal",
+				"match": "\\\\."
+			}]
+		},
+		"numeric": {
+			"name": "constant.numeric.wal",
+			"patterns": [
+				{
+					"name": "constant.numeric.wal",
+					"match": "\\b0b[01]+\\b"
+				},
+				{
+					"name": "constant.numeric.wal",
+					"match": "\\b0x[0123456789ABCDEFabcdef]+\\b"
+				},
+				{
+					"name": "constant.numeric.wal",
+					"match": "\\b\\d+\\.\\d*(e(-|)\\d*|)\\b"
+				},
+				{
+					"name": "constant.numeric.wal",
+					"match": "\\b(|-)\\d+\\b"
+				}
+			]
+		}
+	},
+	"scopeName": "source.wal"
+}
